@@ -1,0 +1,7 @@
+.focus-link {
+  @apply focus:outline outline-2 outline-blue-700;
+}
+
+.hover-link {
+  @apply hover:underline underline-offset-[6px];
+}
