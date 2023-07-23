@@ -12,12 +12,14 @@
     "airbnb-typescript",
     "plugin:@typescript-eslint/recommended",
     "plugin:testing-library/react",
+    "plugin:react-redux/recommended",
     "prettier"
   ],
   "plugins": [
     "react-refresh",
     "@typescript-eslint",
     "testing-library",
+    "react-redux",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
@@ -39,6 +41,7 @@
     "react-hooks/rules-of-hooks": "error",
     "react-redux/prefer-separate-component-file": 0,
     "react/no-array-index-key": 0,
+    "no-param-reassign": 0,
     "no-nested-ternary": 0,
     "no-shadow": 0,
     "no-console": "warn",
@@ -49,8 +52,6 @@
     "import/prefer-default-export": 0,
     "react/prop-types": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-    "indent": [
-      "error", 2, { "SwitchCase": 1 }],
     "linebreak-style": [0, "unix"],
     "quotes": [
       "error", "single"
@@ -67,6 +68,7 @@
     "prettier/prettier": "error",
     "import/extensions": 0,
     "react/require-default-props": 0,
+    "import/no-named-as-default": 0,
     "import/order": [
       2,
       {

@@ -1,1 +1,3 @@
-export { default as Articles } from './articles';
+import Articles from './articles.tsx';
+
+export default Articles;

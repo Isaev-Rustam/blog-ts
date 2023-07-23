@@ -4,6 +4,6 @@ import { FC, ReactElement } from 'react';
 interface MainProps {
   children: ReactElement;
 }
-const Main: FC<MainProps> = ({ children }) => <main>{children}</main>;
+const Article: FC<MainProps> = ({ children }) => <main>{children}</main>;
 
-export default Main;
+export default Article;
