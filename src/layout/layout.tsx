@@ -2,7 +2,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { FC } from 'react';
 
 import { Wrapper } from '@/components/wrapper';
-import { Routs } from '@/types/routes.ts';
+import { Routs } from '@/types/routes.d.ts';
 
 interface LayoutProps {
   isAuth: boolean;

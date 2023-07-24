@@ -1,21 +1,24 @@
 import { useEffect, useState } from 'react';
 
-import { TimerId } from '@/types/default.ts';
+import { ANIMATION_TIME } from '@/containers/modal/modal-load-container/modal-load-container.tsx';
 
-export const useMount = (isOpen: boolean) => {
-  const [mount, setMount] = useState(false);
-  console.log('useMount', 'isOpen :', isOpen, 'mount :', mount);
+interface UseMountProps {
+  opened: boolean;
+}
+export const useMount = ({ opened }: UseMountProps) => {
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    let id: TimerId;
-    if (isOpen && !mount) {
-      setMount(true);
-    } else if (!isOpen && mount) {
-      id = setTimeout(() => setMount(false), 1500);
-      return () => clearTimeout(id);
+    if (opened && !mounted) {
+      setMounted(true);
+    } else if (!opened && mounted) {
+      setTimeout(() => {
+        setMounted(false);
+      }, ANIMATION_TIME);
     }
-    return undefined;
-  }, [isOpen]);
+  }, [opened]);
 
-  return { mount };
+  return {
+    mounted,
+  };
 };

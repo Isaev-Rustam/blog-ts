@@ -2,7 +2,7 @@ import { describe, it } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 
-import { Routs } from './types/routes.ts';
+import { Routs } from './types/routes.d.ts';
 
 import App from '@/App.tsx';
 

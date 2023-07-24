@@ -15,7 +15,7 @@ const Articles = () => {
       <button type="button" onClick={() => setIsOpen(true)}>
         btn
       </button>
-      <ModalLoadContainer isOpen={isOpen} onClose={handlerCloseModal} />
+      <ModalLoadContainer opened={isOpen} onClose={handlerCloseModal} />
 
       {/* {!isLoading && */}
       {/*   data?.articles.map((article) => ( */}

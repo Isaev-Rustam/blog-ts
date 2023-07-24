@@ -1,21 +1,21 @@
-import { FC, forwardRef, memo } from 'react';
+import { forwardRef } from 'react';
 
 interface ModalLoadProps {
-  onClose?: () => void;
+  onClose: () => void;
 }
 
-const ModalLoad: FC<ModalLoadProps> = memo(
-  forwardRef(({ onClose }, ref) => (
-    <div
-      ref={ref}
-      className="absolute z-20 bg-amber-300 w-2/3 h-1/5 flex justify-around items-start"
-    >
-      <span>Modal</span>
-      <button type="button" onClick={onClose}>
-        x
-      </button>
-    </div>
-  ))
-);
+type Ref = HTMLDivElement;
+
+const ModalLoad = forwardRef<Ref, ModalLoadProps>(({ onClose }, ref) => (
+  <div
+    ref={ref}
+    className="top-0 absolute z-20 bg-amber-300 w-2/3 h-1/5 flex justify-around items-start"
+  >
+    <span>Modal</span>
+    <button type="button" onClick={onClose}>
+      x
+    </button>
+  </div>
+));
 
 export default ModalLoad;

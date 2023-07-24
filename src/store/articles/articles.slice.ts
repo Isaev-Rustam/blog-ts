@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { IArticle, IArticles } from '@/types/articles.ts';
-import { Routs } from '@/types/routes.ts';
+import { IArticle, IArticles } from '@/types/articles.d.ts';
+import { Routs } from '@/types/routes.d.ts';
 import { baseUrl } from '@/utils/base-url.ts';
 
 export const articlesApi = createApi({

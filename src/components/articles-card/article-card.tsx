@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import { Heart } from '@/components/icons';
 import img from '@/assets/profile/загруженное.jpg';
-import { Routs } from '@/types/routes.ts';
+import { Routs } from '@/types/routes.d.ts';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 // interface ArticleCardProps extends IArticle {}
