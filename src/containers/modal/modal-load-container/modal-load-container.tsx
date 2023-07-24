@@ -6,6 +6,7 @@ import ModalAnimationContainer from '../modal-animation-container/modal-animatio
 import { contentAnimation } from '@/components/modal/animation-style/modal-transition.ts';
 import { ModalLoad } from '@/components/modal';
 import { Portal } from '@/containers/modal';
+import { useMount } from '@/hooks/use-mount.tsx';
 
 export const ANIMATION_TIME = 1300;
 
@@ -31,34 +32,39 @@ interface FProps {
   onClose: () => void;
 }
 const F: FC<FProps> = ({ onClose, opened }) => {
-  const contentRef = useRef<HTMLDivElement | null>(null);
+  const contentRef = useRef();
   const [animationIn, setAnimationIn] = useState(false);
 
   useEffect(() => {
-    setAnimationIn(true);
+    setAnimationIn(opened);
   }, [opened]);
 
   console.log(contentAnimation);
   return (
-    <Portal>
-      <CSSTransition
-        in={animationIn}
-        nodeRef={contentRef}
-        timeout={ANIMATION_TIME}
-        mountOnEnter
-        unmountOnExit
-        classNames={contentAnimation}
-      >
-        <ModalLoad onClose={onClose} ref={contentRef} />
-      </CSSTransition>
-    </Portal>
+    <CSSTransition
+      in={animationIn}
+      nodeRef={contentRef}
+      timeout={ANIMATION_TIME}
+      mountOnEnter
+      unmountOnExit
+      classNames={contentAnimation}
+    >
+      <ModalLoad onClose={onClose} ref={contentRef} />
+    </CSSTransition>
   );
 };
 
-const ModalLoadContainer: FC<ModalLoadContainerProps> = memo(({ opened, onClose }) => (
-  <ModalAnimationContainer opened={opened}>
-    <F onClose={onClose} opened={opened} />
-  </ModalAnimationContainer>
-));
+const ModalLoadContainer: FC<ModalLoadContainerProps> = memo(({ opened, onClose }) => {
+  const { mounted } = useMount({ opened });
+
+  if (!mounted) {
+    return null;
+  }
+  return (
+    <Portal>
+      <F onClose={onClose} opened={opened} />
+    </Portal>
+  );
+});
 
 export default ModalLoadContainer;
