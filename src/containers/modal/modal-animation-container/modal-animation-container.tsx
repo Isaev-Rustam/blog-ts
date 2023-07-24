@@ -1,9 +1,9 @@
 import { FC, memo, ReactElement } from 'react';
 
-import OverlayingPopup from '../../../components/modal/overlaying-popap/overlaying-popap.tsx';
 import Portal from '../portal/portal.tsx';
 
 import { useMount } from '@/hooks/use-mount.tsx';
+import { Layout } from '@/components/modal/l.tsx';
 
 interface ModalAnimationContainerProps {
   isOpen: boolean;
@@ -18,7 +18,9 @@ const ModalAnimationContainer: FC<ModalAnimationContainerProps> = memo(
     }
     return (
       <Portal>
-        <OverlayingPopup onClose={onClose}>{children}</OverlayingPopup>
+        <Layout onClose={onClose} opened={isOpen}>
+          {children}
+        </Layout>
       </Portal>
     );
   }
