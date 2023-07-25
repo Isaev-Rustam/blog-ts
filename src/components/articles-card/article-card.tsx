@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import { Heart } from '@/components/icons';
 import img from '@/assets/profile/загруженное.jpg';
-import { Routs } from '@/types/routes.d.ts';
-
+import { Routs } from '@/types/routes.ts';
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 // interface ArticleCardProps extends IArticle {}
 
@@ -23,7 +22,6 @@ const defaultProps = {
 };
 
 const ArticleCard: FC<ArticleCardProps> = memo(({ slug, title, body, favoritesCount }) => {
-  // eslint-disable-next-line no-console
   console.log('ArticleCard');
 
   return (

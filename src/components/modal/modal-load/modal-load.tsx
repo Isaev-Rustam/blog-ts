@@ -7,10 +7,7 @@ interface ModalLoadProps {
 type Ref = HTMLDivElement;
 
 const ModalLoad = forwardRef<Ref, ModalLoadProps>(({ onClose }, ref) => (
-  <div
-    ref={ref}
-    className="top-0 absolute z-20 bg-amber-300 w-2/3 h-1/5 flex justify-around items-start"
-  >
+  <div ref={ref} className="z-30 bg-amber-300 w-2/3 h-1/5 flex justify-around items-start">
     <span>Modal</span>
     <button type="button" onClick={onClose}>
       x

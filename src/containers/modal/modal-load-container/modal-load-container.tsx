@@ -1,68 +1,20 @@
-import { FC, memo, useEffect, useRef, useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
+import { FC, memo } from 'react';
 
-import { contentAnimation } from '@/components/modal/animation-style/modal-transition.ts';
-import { ModalLoad } from '@/components/modal';
+import WrapIsMountedContainer from '@/containers/modal/wrap-is-mounted-container/wrap-is-mounted-container.tsx';
 import { Portal } from '@/containers/modal';
-import { useMount } from '@/hooks/use-mount.tsx';
-
-export const ANIMATION_TIME = 1300;
+import { ModalLoadAnimateContainer } from '@/containers/modal/modal-load-animateon-container/modal-load-animate-container.tsx';
 
 interface ModalLoadContainerProps {
   opened: boolean;
   onClose: () => void;
 }
 
-// interface UseAnimationIn {
-//   opened: boolean;
-// }
-// const useAnimationIn = ({ opened }: UseAnimationIn) => {
-//   const [animationIn, setAnimationIn] = useState(false);
-//
-//   useEffect(() => {
-//     setAnimationIn(true);
-//   }, [opened]);
-//
-//   return { animationIn };
-// };
-interface FProps {
-  opened: boolean;
-  onClose: () => void;
-}
-const F: FC<FProps> = ({ onClose, opened }) => {
-  const contentRef = useRef<HTMLDivElement | null>(null);
-  const [animationIn, setAnimationIn] = useState(false);
-
-  useEffect(() => {
-    setAnimationIn(opened);
-  }, [opened]);
-
-  console.log(contentAnimation);
-  return (
-    <CSSTransition
-      in={animationIn}
-      nodeRef={contentRef}
-      timeout={ANIMATION_TIME}
-      mountOnEnter
-      unmountOnExit
-      classNames={contentAnimation}
-    >
-      <ModalLoad onClose={onClose} ref={contentRef} />
-    </CSSTransition>
-  );
-};
-
-const ModalLoadContainer: FC<ModalLoadContainerProps> = memo(({ opened, onClose }) => {
-  const { mounted } = useMount({ opened });
-
-  if (!mounted) {
-    return null;
-  }
-  return (
+const ModalLoadContainer: FC<ModalLoadContainerProps> = memo(({ opened, onClose }) => (
+  <WrapIsMountedContainer opened={opened}>
     <Portal>
-      <F onClose={onClose} opened={opened} />
+      <ModalLoadAnimateContainer onClose={onClose} opened={opened} />
     </Portal>
-  );
-});
+  </WrapIsMountedContainer>
+));
 
 export default ModalLoadContainer;

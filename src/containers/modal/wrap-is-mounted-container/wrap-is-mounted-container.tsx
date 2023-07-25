@@ -6,14 +6,14 @@ interface ModalAnCnProps {
   opened: boolean;
   children: ReactElement;
 }
-const ModalAnimationContainer: FC<ModalAnCnProps> = ({ children, opened }) => {
+const WrapIsMountedContainer: FC<ModalAnCnProps> = ({ children, opened }) => {
   const { mounted } = useMount({ opened });
-  console.log('mounted', mounted);
 
   if (!mounted) {
     return null;
   }
+
   return children;
 };
 
-export default ModalAnimationContainer;
+export default WrapIsMountedContainer;

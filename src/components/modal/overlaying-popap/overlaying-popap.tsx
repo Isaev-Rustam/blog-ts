@@ -12,7 +12,7 @@ export const OverlayingPopup = forwardRef<Ref, OverlayingPopupProps>(
       <button
         type="button"
         aria-label="close popup"
-        className="absolute inset-0 bg-black/60"
+        className="fixed z-20 inset-0 bg-black/60"
         onClick={onClose}
       />
       {children}
