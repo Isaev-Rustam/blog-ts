@@ -12,6 +12,6 @@ html {
   }
 }
 
-button:disabled{
+button:disabled {
   background: rebeccapurple;
 }

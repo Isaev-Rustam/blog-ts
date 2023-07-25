@@ -3,7 +3,6 @@ import { ArticleCard } from '@/components/articles-card';
 
 const Articles = () => {
   const { isLoading, data, error } = useGetArticlesQuery();
-  console.log('Articles', typeof error);
 
   return (
     <section className="flex flex-col gap-5 mx-auto max-w-4xl">
